@@ -1,2 +1,9 @@
+# JS packages
+/node_modules
+
+# IDE files
 .idea
 .vs
+
+# FS Index
+.DS_Store

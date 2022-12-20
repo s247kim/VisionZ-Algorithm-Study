@@ -1,4 +1,4 @@
-const people = [
+export const input221216 = [
     {
         "guid": "91d8dd08-e09e-4415-9d0a-73d8a4bb2a61",
         "name": "Cleveland Herman",

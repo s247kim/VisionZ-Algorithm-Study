@@ -1,6 +1,5 @@
-// Write a function to index items in the array by birth month
-// Array may get longer
-const input = [
+/**
+ [
     {
         _id: "639767b7a889387682fbdc3f",
         name: "Reed Rosales",
@@ -10,7 +9,7 @@ const input = [
         email: "reedrosales@typhonica.com",
         phone: "+1 (992) 465-3684",
     },
-    {
+ {
         _id: "639767b71c119cab969e675e",
         name: "Whitfield Cruz",
         gender: "male",
@@ -19,7 +18,7 @@ const input = [
         email: "whitfieldcruz@indexia.com",
         phone: "+1 (822) 419-3684",
     },
-    {
+ {
         _id: "639767b7a0cdb51c558ee42e",
         name: "Anastasia Roy",
         gender: "female",
@@ -28,7 +27,7 @@ const input = [
         email: "anastasiaroy@newcube.com",
         phone: "+1 (996) 438-2895",
     },
-    {
+ {
         _id: "639767b71352eb56cfd5fc34",
         name: "Hardy Burns",
         gender: "male",
@@ -37,7 +36,7 @@ const input = [
         email: "hardyburns@egypto.com",
         phone: "+1 (971) 508-3552",
     },
-    {
+ {
         _id: "639767b713e5b48fee3be64f",
         name: "Holcomb Herring",
         gender: "male",
@@ -46,11 +45,14 @@ const input = [
         email: "holcombherring@exoplode.com",
         phone: "+1 (824) 457-2159",
     },
-];
+ ];
+ */
 
-function indexByBirthMonth() {
-    // Your code goes here
-}
+// Write a function to index items in the array by birth month
+// Array may get longer
+// function indexByBirthMonth() {
+//     // Your code goes here
+// }
 
 /** Expected Output
  {
