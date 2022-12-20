@@ -1,6 +1,4 @@
-// Write a function to index items in the array by gender
-// Array may get longer
-const input = [
+export const input221212_2 = [
     {
         _id: "639767b7a889387682fbdc3f",
         name: "Reed Rosales",
@@ -48,13 +46,26 @@ const input = [
     },
 ];
 
-function indexByGender() {
+// Write a function to index items in the array by birth month
+// Array may get longer
+function indexByBirthMonth() {
     // Your code goes here
 }
 
 /** Expected Output
  {
-  "male": [
+  "12": [
+    {
+      "_id": "639767b71352eb56cfd5fc34",
+      "name": "Hardy Burns",
+      "gender": "male",
+      "birthday": "1980-12-04",
+      "company": "EGYPTO",
+      "email": "hardyburns@egypto.com",
+      "phone": "+1 (971) 508-3552"
+    }
+  ],
+  "05": [
     {
       "_id": "639767b7a889387682fbdc3f",
       "name": "Reed Rosales",
@@ -72,27 +83,9 @@ function indexByGender() {
       "company": "INDEXIA",
       "email": "whitfieldcruz@indexia.com",
       "phone": "+1 (822) 419-3684"
-    },
-    {
-      "_id": "639767b71352eb56cfd5fc34",
-      "name": "Hardy Burns",
-      "gender": "male",
-      "birthday": "1980-12-04",
-      "company": "EGYPTO",
-      "email": "hardyburns@egypto.com",
-      "phone": "+1 (971) 508-3552"
-    },
-    {
-      "_id": "639767b713e5b48fee3be64f",
-      "name": "Holcomb Herring",
-      "gender": "male",
-      "birthday": "2001-08-05",
-      "company": "EXOPLODE",
-      "email": "holcombherring@exoplode.com",
-      "phone": "+1 (824) 457-2159"
     }
   ],
-  "female": [
+  "02": [
     {
       "_id": "639767b7a0cdb51c558ee42e",
       "name": "Anastasia Roy",
@@ -101,6 +94,17 @@ function indexByGender() {
       "company": "NEWCUBE",
       "email": "anastasiaroy@newcube.com",
       "phone": "+1 (996) 438-2895"
+    }
+  ],
+  "08": [
+    {
+      "_id": "639767b713e5b48fee3be64f",
+      "name": "Holcomb Herring",
+      "gender": "male",
+      "birthday": "2001-08-05",
+      "company": "EXOPLODE",
+      "email": "holcombherring@exoplode.com",
+      "phone": "+1 (824) 457-2159"
     }
   ]
 }

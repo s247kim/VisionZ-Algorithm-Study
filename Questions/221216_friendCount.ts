@@ -215,12 +215,12 @@ export const input221216 = [
 // Write a function to return the name of a person with the most friends.
 // If there are more than 1 person with the highest friend count, return any one of them.
 function findMostPopular() {
-
+    // Your code goes here
 }
 
 // A GUID in the friends property is the GUID of a person in the list.
 // Write a function to return the name of a person with the most male friends
 // If there are more than 1 person with the highest male friend count, return any one of them.
 function findPersonWithMostMaleFriends() {
-
+    // Your code goes here
 }
