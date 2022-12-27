@@ -14,7 +14,8 @@ export const genQuestionFile = async (filename: string, serializableData: any): 
     const content = `export const input${dateStr} = ${makePrettyJSON(serializableData)};
     \nexport type Input${dateStr} = typeof input${dateStr};\nexport type Output${dateStr} = any;
     \nfunction ${funcStr}(input: Input${dateStr}): Output${dateStr} {
-    // Your code goes here\n}`;
+    // Your code goes here
+    return null as any;\n}\n`;
 
     await fs.writeFile(path.resolve(dir, "../", base), content);
 };
