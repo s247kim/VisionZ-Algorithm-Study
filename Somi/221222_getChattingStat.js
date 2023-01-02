@@ -623,11 +623,10 @@ function getChattingStat(input) {
 
     let maxCountOfChats = 0;
     let chattiestPersonOverall = "";
+    let maxCountOfChatsPerRoom = new Map();
+    let chattiestPersonPerRoom = new Map();
 
-    input.forEach((msg) => {
-        let chatRoom = msg.chatRoomId;
-        let person = msg.senderId;
-        // 우선 룹에 처음 들어온 person의 chat 카운트는 0으로 시작
+    const findChattiestPersonOverall = (chatRoom, person) => {
         if (personChatNumberMap[person] === undefined) {
             personChatNumberMap[person] = 0;
         }
@@ -639,22 +638,41 @@ function getChattingStat(input) {
             maxCountOfChats = personChatNumberMap[person];
             chattiestPersonOverall = person;
         }
+        return chattiestPersonOverall;
+    };
 
+    const findchattiestPersonPerRoom = (chatRoom, person) => {
         if (chattiestEachRoom[chatRoom] === undefined) {
             chattiestEachRoom[chatRoom] = new Map();
         }
-
         if (chattiestEachRoom[chatRoom][person] === undefined) {
             chattiestEachRoom[chatRoom][person] = 0;
         }
         chattiestEachRoom[chatRoom][person] += 1;
 
+        if (maxCountOfChatsPerRoom[chatRoom] === undefined) {
+            maxCountOfChatsPerRoom[chatRoom] = 0;
+        }
+        if (chattiestEachRoom[chatRoom][person] > maxCountOfChatsPerRoom[chatRoom]) {
+            maxCountOfChatsPerRoom[chatRoom] = chattiestEachRoom[chatRoom][person];
+            chattiestPersonPerRoom[chatRoom] = person;
+        }
+        return chattiestPersonPerRoom;
+    };
+
+    const findmostRoomParticipation = (chatRoom, person) => {
         const mostRoomParticipationSet = mostRoomParticipation[person] || new Set();
         mostRoomParticipationSet.add(chatRoom);
         mostRoomParticipation[person] = mostRoomParticipationSet;
-    });
+    };
 
-    console.log(chattiestEachRoom);
-    console.log(mostRoomParticipation);
-    console.log(chattiestPersonOverall);
+    input.forEach((msg) => {
+        let chatRoom = msg.chatRoomId;
+        let person = msg.senderId;
+
+        findChattiestPersonOverall(chatRoom, person);
+        findchattiestPersonPerRoom(chatRoom, person);
+        findmostRoomParticipation(chatRoom, person);
+    });
+    return `{ mostTalkativePerson: ${chattiestPersonOverall}, { mostTalkativeInRoom: ${chattiestPersonPerRoom}, mostBusyPerson: ${mostRoomParticipation} }`;
 }
