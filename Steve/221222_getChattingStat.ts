@@ -25,7 +25,7 @@ function getChattingStat(input221222) {
     for (let person in mostTalkativePersonOverallMap) {
         let currentPerson = person;
         let currentPersonMsgCount = mostTalkativePersonOverallMap[currentPerson];
-        if (currentPersonMsgCount > overallMsgCount) {
+        if (currentPersonMsgCount >= overallMsgCount) {
             overallMsgCount = currentPersonMsgCount;
             mostTalkativePerson = currentPerson;
         }
@@ -44,8 +44,15 @@ function getChattingStat(input221222) {
     });
 
     for (let room in msgsPerChatRoomMap) {
-        Output221222.mostTalkativeInRoom[room] = "";
-        let keys = Object.keys(msgsPerChatRoomMap[room]);
+        let msgCount = 0;
+        let mostTalkativeInRoom;
+        for (let sender in msgsPerChatRoomMap[room]) {
+            if (msgsPerChatRoomMap[room][sender] >= msgCount) {
+                msgCount = msgsPerChatRoomMap[room][sender];
+                mostTalkativeInRoom = sender;
+            }
+        }
+        Output221222.mostTalkativeInRoom[room] = mostTalkativeInRoom;
     }
 
     // 3. Find the person participating in most chat room
