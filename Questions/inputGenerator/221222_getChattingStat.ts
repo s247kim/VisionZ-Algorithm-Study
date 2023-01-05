@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 import { genQuestionFile, printJSON } from "./utils/helper";
 import { faker } from "@faker-js/faker";
 
-const MEMBER_COUNT = 5;
+const MEMBER_COUNT = 20;
 const CHAT_LENGTH_PER_ROOM = 20;
 const CHAT_ROOM_COUNT = 5;
 
