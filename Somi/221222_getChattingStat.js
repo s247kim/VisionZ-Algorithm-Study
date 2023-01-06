@@ -617,17 +617,19 @@ const input221222 = [
 // Time Complexity expectation: O(n)
 function getChattingStat(input) {
     // 메세지 숫자만 세보자
-    const personChatNumberMap = new Map();
-    const chattiestEachRoom = new Map();
-    const mostRoomParticipation = new Map();
+    const personChatNumberMap = {};
+    const chattiestEachRoom = {};
+    const mostRoomParticipation = {};
 
     let maxCountOfChats = 0;
     let chattiestPersonOverall = "";
-    let maxCountOfChatsPerRoom = new Map();
-    let chattiestPersonPerRoom = new Map();
+    let maxCountOfChatsPerRoom = {};
+    let chattiestPersonPerRoom = {};
+    let maxChatRoomCount = 0;
+    let mostBusyPerson = "";
 
     const findChattiestPersonOverall = (chatRoom, person) => {
-        if (personChatNumberMap[person] === undefined) {
+        if (!personChatNumberMap[person]) {
             personChatNumberMap[person] = 0;
         }
         // 처음 들어온 사람은 여기서 1이 되고
@@ -642,15 +644,15 @@ function getChattingStat(input) {
     };
 
     const findchattiestPersonPerRoom = (chatRoom, person) => {
-        if (chattiestEachRoom[chatRoom] === undefined) {
-            chattiestEachRoom[chatRoom] = new Map();
+        if (!chattiestEachRoom[chatRoom]) {
+            chattiestEachRoom[chatRoom] = {};
         }
-        if (chattiestEachRoom[chatRoom][person] === undefined) {
+        if (!chattiestEachRoom[chatRoom][person]) {
             chattiestEachRoom[chatRoom][person] = 0;
         }
         chattiestEachRoom[chatRoom][person] += 1;
 
-        if (maxCountOfChatsPerRoom[chatRoom] === undefined) {
+        if (!maxCountOfChatsPerRoom[chatRoom]) {
             maxCountOfChatsPerRoom[chatRoom] = 0;
         }
         if (chattiestEachRoom[chatRoom][person] > maxCountOfChatsPerRoom[chatRoom]) {
@@ -664,6 +666,11 @@ function getChattingStat(input) {
         const mostRoomParticipationSet = mostRoomParticipation[person] || new Set();
         mostRoomParticipationSet.add(chatRoom);
         mostRoomParticipation[person] = mostRoomParticipationSet;
+        if (mostRoomParticipationSet.size > maxChatRoomCount) {
+            maxChatRoomCount = mostRoomParticipationSet.size;
+            mostBusyPerson = person;
+        }
+        return mostRoomParticipation[person];
     };
 
     input.forEach((msg) => {
@@ -674,5 +681,9 @@ function getChattingStat(input) {
         findchattiestPersonPerRoom(chatRoom, person);
         findmostRoomParticipation(chatRoom, person);
     });
-    return `{ mostTalkativePerson: ${chattiestPersonOverall}, { mostTalkativeInRoom: ${chattiestPersonPerRoom}, mostBusyPerson: ${mostRoomParticipation} }`;
+    return `{ mostTalkativePerson: ${chattiestPersonOverall}, { mostTalkativeInRoom: ${JSON.stringify(
+        chattiestPersonPerRoom
+    )}, mostBusyPerson: ${mostBusyPerson} }`;
 }
+
+getChattingStat(input221222);
