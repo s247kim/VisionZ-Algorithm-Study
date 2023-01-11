@@ -1,4 +1,4 @@
-interface ISinglyLinkedListNode<T> {
+export interface ISinglyLinkedListNode<T> {
     /**
      * Get the node located at the specified hop away from this node
      *
@@ -6,14 +6,14 @@ interface ISinglyLinkedListNode<T> {
      * Return undefined if reached the end of the list
      * Time Complexity: O(n) where n is hop
      */
-    getNext(hop?: number): SinglyLinkedListNode<T> | undefined;
+    getNext(hop?: number): ISinglyLinkedListNode<T> | undefined;
 
     /**
      * Insert a new node after this node, and return the inserted node
      *
      * Time Complexity: O(1)
      */
-    insertNext(value: T): SinglyLinkedListNode<T>;
+    insertNext(value: T): ISinglyLinkedListNode<T>;
 
     /**
      * Delete next node(s), and return itself for further chaining
@@ -21,38 +21,38 @@ interface ISinglyLinkedListNode<T> {
      * Delete the next node only if count is not provided (default is 1)
      * Time Complexity: O(n) when n is count
      */
-    deleteNext(count?: number): SinglyLinkedListNode<T>;
+    deleteNext(count?: number): ISinglyLinkedListNode<T>;
 
     /**
      * Update the value and return itself for further chaining
      */
-    updateValue(value: T): SinglyLinkedListNode<T>;
+    updateValue(value: T): ISinglyLinkedListNode<T>;
 
     get value(): T;
 }
 
 class SinglyLinkedListNode<T> implements ISinglyLinkedListNode<T> {
     private m_value: T;
-    private next: SinglyLinkedListNode<T> | undefined;
+    private next: ISinglyLinkedListNode<T> | undefined;
 
-    constructor(value: T, next?: SinglyLinkedListNode<T>) {
+    constructor(value: T, next?: ISinglyLinkedListNode<T>) {
         this.m_value = value;
         this.next = next;
     }
 
-    deleteNext(count?: number): SinglyLinkedListNode<T> {
+    deleteNext(count?: number): ISinglyLinkedListNode<T> {
 
     }
 
-    getNext(hop?: number): SinglyLinkedListNode<T> | undefined {
+    getNext(hop?: number): ISinglyLinkedListNode<T> | undefined {
 
     }
 
-    insertNext(value: T): SinglyLinkedListNode<T> {
+    insertNext(value: T): ISinglyLinkedListNode<T> {
 
     }
 
-    updateValue(value: T): SinglyLinkedListNode<T> {
+    updateValue(value: T): ISinglyLinkedListNode<T> {
 
     }
 
@@ -61,18 +61,18 @@ class SinglyLinkedListNode<T> implements ISinglyLinkedListNode<T> {
     }
 }
 
-interface ISinglyLinkedList<T> {
+export interface ISinglyLinkedList<T> {
     /**
      * Return the node at specified index.
      *
      * Return undefined if not found
      */
-    getNode(index: number): SinglyLinkedListNode<T> | undefined;
+    getNode(index: number): ISinglyLinkedListNode<T> | undefined;
 
     /**
      * Insert a node at index 0
      */
-    insertFirst(value: T): SinglyLinkedListNode<T>;
+    insertFirst(value: T): ISinglyLinkedListNode<T>;
 
     /**
      * Prints the linked list similar to console.log an Array
@@ -81,17 +81,17 @@ interface ISinglyLinkedList<T> {
 }
 
 class SinglyLinkedList<T> implements ISinglyLinkedList<T> {
-    private head?: SinglyLinkedListNode<T>;
+    private head?: ISinglyLinkedListNode<T>;
 
-    static fromArray<A>(source: Array<A>): SinglyLinkedList<A> {
-
-    }
-
-    getNode(index: number): SinglyLinkedListNode<T> | undefined {
+    static fromArray<A>(source: Array<A>): ISinglyLinkedList<A> {
 
     }
 
-    insertFirst(value: T): SinglyLinkedListNode<T> {
+    getNode(index: number): ISinglyLinkedListNode<T> | undefined {
+
+    }
+
+    insertFirst(value: T): ISinglyLinkedListNode<T> {
 
     }
 
