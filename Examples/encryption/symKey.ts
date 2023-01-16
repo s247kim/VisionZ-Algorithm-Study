@@ -11,13 +11,13 @@ import { BinaryLike, CipherGCMTypes, createCipheriv, createDecipheriv, randomByt
     const secret = await askQuestion("암호를 설정하세요");
 
     const cipherText = await encrypt(plainText, secret);
-    console.log(`\n\nYour cipherText is:\n${cipherText}\n\n`);
+    console.log(`Your cipherText is:\n${cipherText}\n\n`);
 
     const confirmSecret = await askQuestion("암호를 입력하세요");
     const decryptedText = await decrypt(cipherText, confirmSecret);
-    console.log(`\n\nSuccessful Decryption:\n${decryptedText}\n\n`);
+    console.log(`Successful Decryption:\n${decryptedText}\n\n`);
 
-    async function makePassword(secret: BinaryLike, salt: BinaryLike, length: number): Promise<Buffer> {
+    function makePassword(secret: BinaryLike, salt: BinaryLike, length: number): Promise<Buffer> {
         return new Promise((resolve, reject) => {
             scrypt(secret, salt, length, (err, derivedKey) => {
                 if (err) return reject(err);
@@ -43,7 +43,7 @@ import { BinaryLike, CipherGCMTypes, createCipheriv, createDecipheriv, randomByt
         decipher.setAuthTag(tag);
 
         const decrypted = Buffer.concat([decipher.update(encryptedData), decipher.final()]);
-        return decrypted.toString("utf8");
+        return decrypted.toString();
     }
 
     function makeCipherText(encryptedData: Buffer, salt: Buffer, iv: Buffer, tag: Buffer): string {
