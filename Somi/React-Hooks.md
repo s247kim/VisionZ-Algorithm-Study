@@ -243,7 +243,7 @@ export default function App() {
             <span> + 10000 = {sumBigNumbers}</span>
             <h3>쉬운 계산</h3>
             <input type="number" value={smallNumber} onChange={(e) => setSmallNumber(parseInt(e.target.value))} />
-            <span> + 1 = {sumBigNumbers}</span>
+            <span> + 1 = {sumEasyNumbers}</span>
         </div>
     );
 }
@@ -261,11 +261,11 @@ export default function App() {
         return {
             country: isInKorea ? "한국" : "캐나다",
         };
-    }, [location]);
+    }, [isInKorea]);
 
     useEffect(() => {
         console.log("useEffect 호출");
-    }, [location]);
+    }, [isInKorea]);
 
     return (
         <div>
