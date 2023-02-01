@@ -115,7 +115,7 @@ const ACTION_TYPES = {
     withdraw: "withdraw",
 };
 
-function reducer(state, action) {
+const reducer = (state, action) => {
     switch (action.type) {
         case ACTION_TYPES.deposit:
             return state + action.payload;
@@ -124,19 +124,22 @@ function reducer(state, action) {
         default:
             return state;
     }
-}
-
-function Balance() {
+};
+function App() {
     const [number, setNumber] = useState(0);
-    const [state, dispatch] = useReducer(reducer, 0);
+    const [money, dispatch] = useReducer(reducer, 0);
 
     return (
         <>
-            잔고: {money}원<button onClick={() => dispatch({ type: "deposit", payload: number })}>예금</button>
+            잔고: {money}원
+            <input type="number" value={number} onChange={(e) => setNumber(parseInt(e.target.value))} step="1000" />
+            <button onClick={() => dispatch({ type: "deposit", payload: number })}>예금</button>
             <button onClick={() => dispatch({ type: "withdraw", payload: number })}>출금</button>
         </>
     );
 }
+
+export default App;
 ```
 
 # `useRef`
